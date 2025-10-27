@@ -1,0 +1,10 @@
+.parent {
+  padding: 1rem 2rem;
+  border-radius: 0.25rem;
+  background-color: var(--highlight-color);
+  color: var(--text-color);
+}
+
+.score {
+  font-weight: 500;
+}
