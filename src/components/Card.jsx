@@ -1,11 +1,11 @@
 import styles from '../styles/Card.module.css';
 
-function Card({ imageUrl, title }) {
+function Card({ imageUrl, title, onCardClick }) {
   return (
-    <figure className={styles.card}>
+    <button onClick={onCardClick} className={styles.card}>
       <img className={styles.avatar} src={imageUrl} alt={title} />
       <figcaption className={styles.caption}>{title}</figcaption>
-    </figure>
+    </button>
   );
 }
 
