@@ -1,5 +1,7 @@
 import styles from '../styles/Home.module.css';
 import Card from '../components/Card';
+import ScoreCard from '../components/ScoreCard';
+import Main from '../components/Main';
 import { useEffect, useState } from 'react';
 import { shuffle } from '../utils/utils';
 
@@ -8,8 +10,8 @@ const url =
 
 function Home() {
   const [images, setImages] = useState(null);
-
-  console.log('re-render!!!');
+  const [score, setScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
 
   const onCardClick = () => {
     setImages(previousState => [...shuffle(previousState)]);
@@ -47,14 +49,18 @@ function Home() {
   if (images)
     return (
       <div className={styles.home}>
-        {images.map(({ imageUrl, title, id }) => (
-          <Card
-            onCardClick={onCardClick}
-            title={title}
-            imageUrl={imageUrl}
-            key={id}
-          />
-        ))}
+        <ScoreCard currentScore={score} bestScore={bestScore} />
+        <Main>
+          {images.map(({ imageUrl, title, id }) => (
+            <Card
+              onCardClick={onCardClick}
+              onChangeScore={{ setScore, setBestScore }}
+              title={title}
+              imageUrl={imageUrl}
+              key={id}
+            />
+          ))}
+        </Main>
       </div>
     );
   return <div className={styles.home}>Loading...</div>;

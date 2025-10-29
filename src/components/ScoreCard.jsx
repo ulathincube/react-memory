@@ -1,11 +1,11 @@
 import styles from '../styles/Scorecard.module.css';
 import Score from './Score';
 
-function ScoreCard() {
+function ScoreCard({ currentScore, bestScore }) {
   return (
     <div className={styles.board}>
-      <Score title='Current Score' />
-      <Score title='Best Score' />
+      <Score title='Current Score' currentScore={currentScore} />
+      <Score title='Best Score' currentScore={bestScore} />
     </div>
   );
 }
